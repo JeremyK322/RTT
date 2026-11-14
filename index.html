@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Live Transcribe</title>
+  <meta name="description" content="Live speech to text in large letters.">
+
+  <meta name="theme-color" content="#08090a">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Transcribe">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main id="startScreen" class="screen start">
+    <h1>Live Transcribe</h1>
+    <p class="lede">Tap start, then speak normally. The words appear here in large letters.</p>
+
+    <button id="startBtn" class="primary" type="button">Start listening</button>
+
+    <p id="unsupported" class="warn" hidden>
+      Live transcription is not available in this browser. Open this page in
+      <strong>Safari</strong> on the iPhone.
+    </p>
+
+    <div class="options">
+      <button id="sizeDown" class="chip" type="button" aria-label="Smaller text">A&minus;</button>
+      <span class="options-label">Text size</span>
+      <button id="sizeUp" class="chip" type="button" aria-label="Bigger text">A+</button>
+      <button id="themeBtn" class="chip" type="button">Light</button>
+    </div>
+
+    <p class="hint">
+      Tip: in Safari tap <em>Share</em> &rarr; <em>Add to Home Screen</em>
+      for a full-screen version without the browser bars.
+    </p>
+
+    <details class="diag">
+      <summary>Info</summary>
+      <pre id="diagText"></pre>
+    </details>
+  </main>
+
+  <main id="liveScreen" class="screen live" hidden>
+    <div class="statusbar">
+      <div id="status" class="status" data-state="listening">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="statusText">Listening</span>
+      </div>
+    </div>
+
+    <div id="transcript" class="transcript">
+      <div id="finals" class="finals"></div><span id="interim" class="interim"></span><span id="emptyHint" class="empty">Listening&hellip; start speaking.</span>
+    </div>
+
+    <div id="errorBanner" class="error" role="alert" hidden></div>
+
+    <div id="toolbar" class="toolbar">
+      <button id="sizeDownLive" class="btn small" type="button" aria-label="Smaller text">A&minus;</button>
+      <button id="sizeUpLive" class="btn small" type="button" aria-label="Bigger text">A+</button>
+      <button id="pauseBtn" class="btn" type="button">Pause</button>
+      <button id="clearBtn" class="btn" type="button">Clear</button>
+      <button id="stopBtn" class="btn" type="button">Stop</button>
+    </div>
+  </main>
+
+  <noscript>This page needs JavaScript.</noscript>
+  <script src="app.js"></script>
+</body>
+</html>
